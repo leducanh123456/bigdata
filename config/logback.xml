@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<property name="LOGS" value="logs" />
+	<appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+	      <pattern>
+	        %d{dd-MM-yyyy HH:mm:ss.SSS} | %magenta([%thread]) | %highlight(%-5level) | %logger{36}.%M - %msg%n
+	      </pattern>
+	    </encoder>
+	</appender>
+	
+	<!-- <appender name="system" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	 	<file>${LOGS}/system.log</file>
+	 	<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+	    	<Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} | [%thread] | %highlight(%-5level) | %-5level %logger{36}.%M - %msg%n</Pattern>
+	  	</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	    	<fileNamePattern>${LOGS}/system_%d{dd-MM-yyyy}.log</fileNamePattern>
+	    	<maxHistory>100</maxHistory>
+	    	<totalSizeCap>1GB</totalSizeCap>
+		</rollingPolicy>
+	</appender> -->
+	<appender name="EXTEND" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	 	<file>${LOGS}/extend.log</file>
+	 	<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+	    	<Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} | [%thread] | %highlight(%-5level) | %-5level %logger{36}.%M - %msg%n</Pattern>
+	  	</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	    	<fileNamePattern>${LOGS}/extend_%d{dd-MM-yyyy}.log</fileNamePattern>
+	    	<maxHistory>100</maxHistory>
+	    	<totalSizeCap>1GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+	
+	<appender name="EXTEND_UPDATE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	 	<file>${LOGS}/extend_update.log</file>
+	 	<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+	    	<Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} | [%thread] | %highlight(%-5level) | %-5level %logger{36}.%M - %msg%n</Pattern>
+	  	</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	    	<fileNamePattern>${LOGS}/extend_update_%d{dd-MM-yyyy}.log</fileNamePattern>
+	    	<maxHistory>100</maxHistory>
+	    	<totalSizeCap>1GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+	
+	<appender name="MONITOR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	 	<file>${LOGS}/logmonitor.log</file>
+	 	<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+	    	<Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} | [%thread] | %highlight(%-5level) | %-5level %logger{36}.%M - %msg%n</Pattern>
+	  	</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	    	<fileNamePattern>${LOGS}/logmonitor_%d{dd-MM-yyyy}.log</fileNamePattern>
+	    	<maxHistory>100</maxHistory>
+	    	<totalSizeCap>1GB</totalSizeCap>
+		</rollingPolicy>
+	</appender>
+	
+	<logger name="com.neo.squartz.MultilThread" additivity="false" level="info">
+		<appender-ref ref="EXTEND" />
+	</logger>
+	
+	<logger name="com.neo.squartz.UpdateExtend" additivity="false" level="info">
+		<appender-ref ref="EXTEND_UPDATE" />
+	</logger>
+	
+	<logger name="com.neo.monitor.NEOMonitorCluster" additivity="false" level="info">
+		<appender-ref ref="MONITOR" />
+	</logger>
+	
+	<!-- <logger name="com.neo" additivity="false" level="debug">
+		<appender-ref ref="system" />
+	</logger> -->
+	
+</configuration>
