@@ -42,7 +42,12 @@ public class BigDataDao {
 			while (resultSet.next()) {
 				String s = "";
 				for (int i = 1; i <= col; i++) {
-					s += resultSet.getObject(i).toString() + "    ";
+					if(resultSet.getObject(i)==null) {
+						s += "    ";
+					}else {
+						s += resultSet.getObject(i).toString() + "    ";
+					}
+					
 				}
 				list.add(s);
 			}

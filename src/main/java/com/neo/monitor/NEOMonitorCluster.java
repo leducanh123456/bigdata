@@ -396,6 +396,7 @@ public class NEOMonitorCluster {
 		if (map.isEmpty() && !update) {
 			int k = moduleService.updateAll(moduleBo, listJob);
 			logger.info("master update db 389");
+			addJobMaster();
 		}
 
 	}
