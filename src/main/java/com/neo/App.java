@@ -16,11 +16,12 @@ import com.neo.utils.ExtractException;
 @EnableScheduling
 public class App {
 	private static final Logger logger = LoggerFactory.getLogger(App.class);
+
 	public static void main(String[] args) {
-		ApplicationContext context = SpringApplication.run(App.class, args);
-		NEOMonitorCluster neoMonitorCluster = context.getBean(com.neo.monitor.NEOMonitorCluster.class);
-		System.out.println("Server Started");
 		try {
+			ApplicationContext context = SpringApplication.run(App.class, args);
+			NEOMonitorCluster neoMonitorCluster = context.getBean(com.neo.monitor.NEOMonitorCluster.class);
+			System.out.println("Server Started");
 			neoMonitorCluster.run();
 		} catch (IOException e) {
 			logger.error("neoMonitorCluster Exception=" + ExtractException.exceptionToString(e));
